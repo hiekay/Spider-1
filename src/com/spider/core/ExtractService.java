@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.crypto.Data;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.Connection.Response;
@@ -97,31 +99,40 @@ public class ExtractService
 					results = doc.getElementsByTag("body");
 				}
 			}
-
-			for (Element result : results)
-			{
-				Elements links = result.getElementsByTag("a");
-
-				for (Element link : links)
-				{
-					//必要的筛选
-					String linkHref = link.attr("href"); 
-//					String linkHref = "";
-					String linkText = link.text();
-
-					data = new LinkTypeData();
-					data.setLinkHref(linkHref);
-					data.setLinkText(linkText);
-
-					datas.add(data);
-				}
-			}
+			
+			datas = searchHref(results);
 
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
+		return datas;
+	}
+	
+	public static List<LinkTypeData> searchHref(Elements results){
+		
+		List<LinkTypeData> datas = new ArrayList<LinkTypeData>();
+		for (Element result : results)
+		{
+			Elements links = result.getElementsByTag("a");
+
+			for (Element link : links)
+			{
+				//必要的筛选
+				String linkHref = link.attr("href"); 
+//				String linkHref = "";
+				String linkText = link.text();
+				
+				
+				LinkTypeData data = new LinkTypeData();
+				data.setLinkHref(linkHref);
+				data.setLinkText(linkText);
+
+				datas.add(data);
+			}
+		}
+		
 		return datas;
 	}
 	
