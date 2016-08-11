@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+import org.jsoup.Connection.Response;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -17,11 +18,14 @@ import com.spider.util.TextUtil;
 
 public class ExtractService
 {
+
 	/**
-	 * @param rule
-	 * @return
+	 * 
+	 * @param rule      连接的规则类
+	 * @param response  登录返回的http Response,需要登录验证时返回的cookie
+	 * @return          
 	 */
-	public static List<LinkTypeData> extract(Rule rule)
+	public static List<LinkTypeData> extract(Rule rule, Response response)
 	{
 
 		// 进行对rule的必要校验
@@ -46,8 +50,12 @@ public class ExtractService
 					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
 					+ " Chrome/26.0.1410.64 Safari/537.31");
 			
+			//设置cookies
+			if(response != null){
+				conn.cookies(response.cookies());
+			}
+			
 			// 设置查询参数
-
 			if (params != null)
 			{
 				for (int i = 0; i < params.length; i++)
