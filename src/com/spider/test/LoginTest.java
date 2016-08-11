@@ -20,7 +20,7 @@ public class LoginTest {
 		    LoginService ls = new LoginService();
 		    SearchService ss = new SearchService();
 		    
-		    Response response = ls.login("why_still_confused", "haozi_1314179");//输入用户名，和密码
+		    Response response = ls.login("***", "***");//输入用户名，和密码
             
 //            Response response2 = Jsoup.connect("http://write.blog.csdn.net/category").userAgent("Mozilla/5.0 "
 //					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
