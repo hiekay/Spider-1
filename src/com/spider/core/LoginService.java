@@ -37,9 +37,10 @@ public class LoginService {
 	   * 
 	   * @param userName 用户名
 	   * @param pwd 密码
+	   * @return 返回HttpResonpe
 	   * 
 	   * **/
-	  public void login(String userName,String pwd)throws Exception{
+	  public Response login(String userName,String pwd)throws Exception{
 		  //第一次请求
 		  Connection con=Jsoup.connect("https://passport.csdn.net/");//获取连接
 		  con.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0");//配置模拟浏览器
@@ -71,19 +72,20 @@ public class LoginService {
 	     con2.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0");
 	     
 	     /*设置cookie和post中的map数据*/
-	     Response login=con2.ignoreContentType(true).method(Method.POST).data(datas).cookies(rs.cookies()).execute();
-
+	     Response login = con2.ignoreContentType(true).method(Method.POST).data(datas).cookies(rs.cookies()).execute();
+	     
 	     //打印登陆成功后的信息
 //	 	   System.out.println(login.body());
-	 	  System.out.println(login.statusCode());
+	 	 System.out.println(login.statusCode());
 
 	 	 //登陆成功后的cookie信息，可以保存到本地，以后登陆时，只需一次登陆即可
 	 	 Map<String, String> map=login.cookies();
 	 	 for(String s:map.keySet()){
 	 		 System.out.println(s+":"+map.get(s));
 	 	 }
+	 	 
+	 	 return login;
 	 	
 	  }
-
   
 }
