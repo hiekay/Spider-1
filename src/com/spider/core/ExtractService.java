@@ -22,7 +22,7 @@ public class ExtractService
 {
 
 	/**
-	 * 
+	 * 依照相应的规则解析数据
 	 * @param rule      连接的规则类
 	 * @param response  登录返回的http Response,需要登录验证时返回的cookie
 	 * @return          
@@ -108,6 +108,11 @@ public class ExtractService
 		return results;
 	}
 	
+	/**
+	 * 从网页中寻找超链接
+	 * @param results
+	 * @return
+	 */
 	public static List<LinkTypeData> searchHref(Elements results){
 		
 		List<LinkTypeData> datas = new ArrayList<LinkTypeData>();
@@ -134,6 +139,27 @@ public class ExtractService
 		return datas;
 	}
 	
+	/**
+	 * 从网页中寻找表格
+	 * @param results
+	 * @return
+	 */
+	public static List<LinkTypeData> searchTable(Elements results){
+		
+		List<LinkTypeData> datas = new ArrayList<LinkTypeData>();
+		for (Element result : results)
+		{
+			Elements tables = result.getElementsByTag("table");  //筛析表格内容
+			Element block1 = tables.get(0);  //选取第一个表格
+	        Elements block2 = block1.select("td[class=tdleft]"); //依照css取得内容
+	        for (Element e:block2) {
+	            System.out.println(e.text().toString().trim());
+	        }
+
+		}
+		
+		return datas;
+	}
 	
 	/**
 	 * 对传入的参数进行必要的校验

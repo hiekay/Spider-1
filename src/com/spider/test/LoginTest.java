@@ -24,7 +24,7 @@ public class LoginTest {
 		    LoginService ls = new LoginService();
 		    SearchService ss = new SearchService();
 		    
-		    Response response = ls.login("****", "****");//输入用户名，和密码
+		    Response response = ls.login("***", "***");//输入用户名，和密码
             
 //            Response response2 = Jsoup.connect("http://write.blog.csdn.net/category").userAgent("Mozilla/5.0 "
 //					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
@@ -35,12 +35,12 @@ public class LoginTest {
 		    
 	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
 	                new String[] {}, new String[] {},  
-	                "a", Rule.SELECTION, Rule.POST);
+	                "body", Rule.SELECTION, Rule.POST);
 	        
 	        /*处理返回数据*/
 	        Elements results = ExtractService.extract(rule, response);
 	        /*获取对应的内容*/
-	        List<LinkTypeData> extracts = ExtractService.searchHref(results);
+	        List<LinkTypeData> extracts = ExtractService.searchTable(results);
 	        PrintService.printf(extracts);
 	        
 	 }
