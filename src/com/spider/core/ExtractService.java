@@ -27,14 +27,13 @@ public class ExtractService
 	 * @param response  登录返回的http Response,需要登录验证时返回的cookie
 	 * @return          
 	 */
-	public static List<LinkTypeData> extract(Rule rule, Response response)
+	public static Elements extract(Rule rule, Response response)
 	{
 
 		// 进行对rule的必要校验
 		validateRule(rule);
 
-		List<LinkTypeData> datas = new ArrayList<LinkTypeData>();
-		LinkTypeData data = null;
+		Elements results = null;
 		try
 		{
 			/**
@@ -79,7 +78,7 @@ public class ExtractService
 			}
 
 			//处理返回数据
-			Elements results = new Elements();
+			results = new Elements();
 			switch (type)
 			{
 			case Rule.CLASS:
@@ -99,15 +98,14 @@ public class ExtractService
 					results = doc.getElementsByTag("body");
 				}
 			}
-			
-			datas = searchHref(results);
+
 
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
-		return datas;
+		return results;
 	}
 	
 	public static List<LinkTypeData> searchHref(Elements results){

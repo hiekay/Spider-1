@@ -2,9 +2,13 @@ package com.spider.test;
 
 import java.util.List;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.spider.bean.LinkTypeData;
 import com.spider.core.ExtractService;
@@ -31,8 +35,12 @@ public class LoginTest {
 		    
 	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
 	                new String[] {}, new String[] {},  
-	                "a", Rule.SELECTION, Rule.POST);  
-	        List<LinkTypeData> extracts = ExtractService.extract(rule, response);  
+	                "a", Rule.SELECTION, Rule.POST);
+	        
+	        /*处理返回数据*/
+	        Elements results = ExtractService.extract(rule, response);
+	        /*获取对应的内容*/
+	        List<LinkTypeData> extracts = ExtractService.searchHref(results);
 	        PrintService.printf(extracts);
 	        
 	 }
