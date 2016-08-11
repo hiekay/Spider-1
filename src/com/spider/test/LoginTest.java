@@ -2,6 +2,7 @@ package com.spider.test;
 
 import java.util.List;
 
+import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 
@@ -19,14 +20,20 @@ public class LoginTest {
 		    LoginService ls = new LoginService();
 		    SearchService ss = new SearchService();
 		    
-		    Response response = ls.login("***", "***");//输入用户名，和密码
-		    ss.searchInfo(response);
+		    Response response = ls.login("why_still_confused", "haozi_1314179");//输入用户名，和密码
+            
+//            Response response2 = Jsoup.connect("http://write.blog.csdn.net/category").userAgent("Mozilla/5.0 "
+//					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
+//					+ " Chrome/26.0.1410.64 Safari/537.31")
+//                    .cookies(response.cookies()).method(Method.GET).execute();
 		    
-//	        Rule rule = new Rule("http://write.blog.csdn.net/postlist",  
-//	                new String[] {}, new String[] {},  
-//	                "a", Rule.SELECTION, Rule.POST);  
-//	        List<LinkTypeData> extracts = ExtractService.extract(rule);  
-//	        PrintService.printf(extracts);
+//		    ss.searchInfo(response2);
+		    
+	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
+	                new String[] {}, new String[] {},  
+	                "a", Rule.SELECTION, Rule.POST);  
+	        List<LinkTypeData> extracts = ExtractService.extract(rule, response);  
+	        PrintService.printf(extracts);
 	        
 	 }
 
