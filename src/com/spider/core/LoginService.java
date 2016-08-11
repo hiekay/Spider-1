@@ -13,7 +13,6 @@ import org.jsoup.nodes.Element;
 
 import com.spider.bean.LinkTypeData;
 import com.spider.rule.Rule;
-import com.spider.test.Test1;
 
 /**
  * 使用Jsoup模拟登陆Csdn
