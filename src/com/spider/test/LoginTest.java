@@ -11,11 +11,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.spider.bean.LinkTypeData;
-import com.spider.core.ExtractService;
-import com.spider.core.LoginService;
-import com.spider.core.PrintService;
-import com.spider.core.SearchService;
-import com.spider.rule.Rule;
+import com.spider.bean.Rule;
+import com.spider.service.ExtractService;
+import com.spider.service.LoginService;
+import com.spider.service.PrintService;
+import com.spider.service.SearchService;
 
 public class LoginTest {
 	

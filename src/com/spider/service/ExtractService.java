@@ -1,4 +1,4 @@
-package com.spider.core;
+package com.spider.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.spider.bean.LinkTypeData;
-import com.spider.rule.Rule;
-import com.spider.rule.RuleException;
+import com.spider.bean.Rule;
+import com.spider.bean.RuleException;
 import com.spider.util.TextUtil;
 
 public class ExtractService

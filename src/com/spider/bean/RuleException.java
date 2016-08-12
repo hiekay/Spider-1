@@ -1,4 +1,4 @@
-package com.spider.rule;
+package com.spider.bean;
 
 public class RuleException extends RuntimeException
 {

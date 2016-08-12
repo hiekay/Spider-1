@@ -1,4 +1,4 @@
-package com.spider.core;
+package com.spider.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import com.spider.bean.LinkTypeData;
-import com.spider.rule.Rule;
+import com.spider.bean.Rule;
 
 /**
  * 使用Jsoup模拟登陆Csdn
