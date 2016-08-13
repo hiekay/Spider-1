@@ -171,7 +171,7 @@ public class ExtractService
 		{
 			throw new RuleException("url不能为空！");
 		}
-		if (!url.startsWith("http://"))
+		if (!(url.startsWith("http://") || url.startsWith("https://")))
 		{
 			throw new RuleException("url的格式不正确！");
 		}
