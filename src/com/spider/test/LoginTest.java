@@ -16,37 +16,30 @@ import com.spider.service.ExtractService;
 import com.spider.service.LoginService;
 import com.spider.service.PrintService;
 import com.spider.service.SearchService;
-
+/**
+ * csdn模拟登录,获取表格内容
+ * @author LIn
+ *
+ */
 public class LoginTest {
 	
 	  public static void main(String[] args)throws Exception {
 		    
-//		    LoginService ls = new LoginService();
-//		    SearchService ss = new SearchService();
-//		    
-//		    Response response = ls.login("***", "***");//输入用户名，和密码
-            
-//            Response response2 = Jsoup.connect("http://write.blog.csdn.net/category").userAgent("Mozilla/5.0 "
-//					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
-//					+ " Chrome/26.0.1410.64 Safari/537.31")
-//                    .cookies(response.cookies()).method(Method.GET).execute();
+		    LoginService ls = new LoginService();
+		    SearchService ss = new SearchService();
 		    
-//		    ss.searchInfo(response2);
+		    /*输入用户名和密码以模拟登录  */
+		    Response response = ls.login("***", "***");
 		    
-//	        Rule rule = new Rule("https://www.baidu.com/s",  
-//	                new String[] {"wd"}, new String[] {"apple"},  
-//	                null, -1, Rule.GET);
+		    /*设置爬取规则*/
+	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
+	                new String[] {}, new String[] {},  
+	                "body", Rule.SELECTION, Rule.POST);
 	        
-		    /*当当网商品爬取*/
-	        Rule rule = new Rule("http://search.dangdang.com",  
-	                new String[] {"key"}, new String[] {"白说"},  
-	                "pic", Rule.CLASS, Rule.GET);
-	        
-	        Response response = null;
 	        /*处理返回数据*/
 	        Elements results = ExtractService.extract(rule, response);
 	        /*获取对应的内容*/
-	        List<LinkTypeData> extracts = ExtractService.searchHref(results);
+	        List<LinkTypeData> extracts = ExtractService.searchTable(results);
 	        PrintService.printf(extracts);
 	         
 	 }
