@@ -9,7 +9,11 @@ import com.spider.bean.LinkTypeData;
 import com.spider.bean.Rule;
 import com.spider.service.ExtractService;
 import com.spider.service.PrintService;
-
+/**
+ * 当当网内容搜索
+ * @author LIn
+ *
+ */
 public class ContentTest {
 	
 	public static void main(String[] args) {
