@@ -26,7 +26,6 @@ public class LoginTest {
 	  public static void main(String[] args)throws Exception {
 		    
 		    LoginService ls = new LoginService();
-		    SearchService ss = new SearchService();
 		    
 		    /*输入用户名和密码以模拟登录  */
 		    Response response = ls.login("***", "***");
