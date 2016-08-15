@@ -33,13 +33,14 @@ public class LoginTest {
 		    
 //		    ss.searchInfo(response2);
 		    
-	        Rule rule = new Rule("https://www.baidu.com/s",  
-	                new String[] {"wd"}, new String[] {"apple"},  
-	                null, -1, Rule.GET);
-	        
-//	        Rule rule = new Rule("https://s.taobao.com/search",  
-//	                new String[] {"q"}, new String[] {"apple"},  
+//	        Rule rule = new Rule("https://www.baidu.com/s",  
+//	                new String[] {"wd"}, new String[] {"apple"},  
 //	                null, -1, Rule.GET);
+	        
+		    /*当当网商品爬取*/
+	        Rule rule = new Rule("http://search.dangdang.com",  
+	                new String[] {"key"}, new String[] {"白说"},  
+	                "pic", Rule.CLASS, Rule.GET);
 	        
 	        Response response = null;
 	        /*处理返回数据*/
