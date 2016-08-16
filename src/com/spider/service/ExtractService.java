@@ -13,6 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.spider.bean.Book;
 import com.spider.bean.LinkTypeData;
 import com.spider.bean.Rule;
 import com.spider.bean.RuleException;
@@ -162,15 +163,16 @@ public class ExtractService
 	}
 	
 	/**
-	 * 当当网商品信息
+	 * 当当网单一商品数据
 	 * @param results
-	 * @return
+	 * @return 
 	 */
-	public static List<LinkTypeData> searchInfo(Elements results){
-		
-		List<LinkTypeData> datas = new ArrayList<LinkTypeData>();
+	public static Book searchInfo(Elements results){
 		
 		Element result = results.get(0);
+		
+		/*从网页元素里读取数据
+		 * 按照类型或id读取相应的数据*/
 		String name = result.getElementsByClass("head").text().toString();
 		String price = result.getElementById("salePriceTag").text().toString();
 		
@@ -180,23 +182,19 @@ public class ExtractService
 		String time = info.get(8).text().toString();
 		String ISBN = info.get(9).text().toString();
 		
-//        for (Element e:info) {
-//            System.out.println(e.text().toString().trim());
-//        }
-		System.out.println(name);
-		System.out.println(price);
-		System.out.println(author);
-		System.out.println(publishor);
-		System.out.println(time);
-		System.out.println(ISBN);
+		/*将数据封装在模型中*/
+		Book book = new Book();
+		book.setName(name);
+		book.setPrice(price);
+		book.setAuthor(author);
+		book.setPublishor(publishor);
+		book.setTime(time);
+		book.setISBN(ISBN);
 
-
-		
-//        Elements block2 = result.select("td[class=tdleft]"); //依照css取得内容
-
-		
-		return datas;
+		return book;
 	}
+	
+	
 	
 	/**
 	 * 对传入的参数进行必要的校验

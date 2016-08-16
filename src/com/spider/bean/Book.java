@@ -2,7 +2,7 @@ package com.spider.bean;
 
 public class Book {
 	private String name;
-	private double price;
+	private String price;
 	private String author;
 	private String publishor;
 	private String time;
@@ -18,10 +18,10 @@ public class Book {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getAuthor() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.jsoup.Connection.Response;
 import org.jsoup.select.Elements;
 
+import com.spider.bean.Book;
 import com.spider.bean.LinkTypeData;
 import com.spider.bean.Rule;
 import com.spider.service.ExtractService;
@@ -30,8 +31,8 @@ public class ContentTest {
         /*处理返回数据*/
         Elements results = ExtractService.extract(rule, response);
         /*获取对应的内容*/
-        List<LinkTypeData> extracts = ExtractService.searchInfo(results);
-        PrintService.printf(extracts);
+        Book b = ExtractService.searchInfo(results);
+
         
 //        SearchService ss = new SearchService();
         
