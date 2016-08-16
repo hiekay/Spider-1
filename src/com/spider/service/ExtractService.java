@@ -174,7 +174,7 @@ public class ExtractService
 		
 		for (int i = 0; i < datas.size() && num < 10; i++) {
 			String url = datas.get(i).getLinkHref();  //获取超链接
-			
+			System.out.println(i);
 	        Rule rule = new Rule(url,  
 	                new String[] {}, new String[] {},  
 	                null, -1, Rule.GET);     //设置搜索规则
@@ -212,16 +212,23 @@ public class ExtractService
 		/*从网页元素里读取数据
 		 * 按照类型或id读取相应的数据*/
 		/*需根据网页的不同样式来选择不同方式获取数据*/
-		if(result.hasClass("head")){  //当当商家
+		if(result.getElementById("salePriceTag") != null){  //当当商家
 			name = result.getElementsByClass("head").text().toString();
 			price = result.getElementById("salePriceTag").text().toString();
 			
 			Elements info = result.getElementsByClass("show_info_right");
 			author = info.get(6).text().toString();
-			publishor = info.get(7).text().toString();
-			time = info.get(8).text().toString();
-			ISBN = info.get(9).text().toString();
-		}else if(result.hasClass("name_info")){  //当当自营
+			
+			if(info.size() > 7){
+				publishor = info.get(7).text().toString();
+				time = info.get(8).text().toString();
+				ISBN = null;
+			}else{
+				publishor = null;
+				time = null;
+				ISBN = null;
+			}
+		}else if(result.getElementById("price_sale") != null){  //当当自营
 			name = result.getElementsByClass("name_info").text().toString();
 			price = result.getElementById("price_sale").text().toString();
 			
