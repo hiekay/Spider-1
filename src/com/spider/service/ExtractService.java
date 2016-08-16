@@ -170,8 +170,9 @@ public class ExtractService
 	public static List<Book> searchListInfo(Elements results){
 		List<LinkTypeData> datas = searchHref(results);
 		List<Book> booklist = new ArrayList<Book>();
+		int num = 0;  //限制数量
 		
-		for (int i = 0; i < datas.size(); i++) {
+		for (int i = 0; i < datas.size() && num < 10; i++) {
 			String url = datas.get(i).getLinkHref();  //获取超链接
 			
 	        Rule rule = new Rule(url,  
@@ -183,7 +184,11 @@ public class ExtractService
 	        /*获取对应的内容*/
 	        Book b = ExtractService.searchInfo(e);
 	        
-	        booklist.add(b);
+	        if(b != null){
+	        	num++;
+	        	booklist.add(b);
+	        }
+	        
 		}
 		
 		return booklist;
@@ -197,17 +202,38 @@ public class ExtractService
 	public static Book searchInfo(Elements results){
 		
 		Element result = results.get(0);
+		String name;
+		String price;
+		String author;
+		String publishor;
+		String time;
+		String ISBN;
 		
 		/*从网页元素里读取数据
 		 * 按照类型或id读取相应的数据*/
-		String name = result.getElementsByClass("head").text().toString();
-		String price = result.getElementById("salePriceTag").text().toString();
+		/*需根据网页的不同样式来选择不同方式获取数据*/
+		if(result.hasClass("head")){  //当当商家
+			name = result.getElementsByClass("head").text().toString();
+			price = result.getElementById("salePriceTag").text().toString();
+			
+			Elements info = result.getElementsByClass("show_info_right");
+			author = info.get(6).text().toString();
+			publishor = info.get(7).text().toString();
+			time = info.get(8).text().toString();
+			ISBN = info.get(9).text().toString();
+		}else if(result.hasClass("name_info")){  //当当自营
+			name = result.getElementsByClass("name_info").text().toString();
+			price = result.getElementById("price_sale").text().toString();
+			
+			Elements info = result.getElementsByClass("t1");
+			author = info.get(0).text().toString();
+			publishor = info.get(1).text().toString();
+			time = info.get(2).text().toString();
+			ISBN = "1";
+		}else{
+			return null;
+		}
 		
-		Elements info = result.getElementsByClass("show_info_right");
-		String author = info.get(6).text().toString();
-		String publishor = info.get(7).text().toString();
-		String time = info.get(8).text().toString();
-		String ISBN = info.get(9).text().toString();
 		
 		/*将数据封装在模型中*/
 		Book book = new Book();

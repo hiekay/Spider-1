@@ -1,12 +1,12 @@
 package com.spider.bean;
 
 public class Book {
-	private String name;
-	private String price;
-	private String author;
-	private String publishor;
-	private String time;
-	private String ISBN;
+	private String name;     //书名
+	private String price;    //价格
+	private String author;   //作者
+	private String publishor;//出版社
+	private String time;     //出版时间
+	private String ISBN;     //ISBN
 	
 	public Book(){
 		
@@ -47,6 +47,13 @@ public class Book {
 	}
 	public void setISBN(String iSBN) {
 		ISBN = iSBN;
+	}
+	
+	@Override
+	public String toString(){
+		return "name: " + name + " price: " + price + " author: "
+				+ author + " publishor: " + publishor + " time: "
+				+ time + " ISBN: " + ISBN;
 	}
 	
 	
