@@ -163,6 +163,33 @@ public class ExtractService
 	}
 	
 	/**
+	 * 当当网中搜索结果对应的多个书籍
+	 * @param results  搜索结果的元素集
+	 * @return  书籍信息列表
+	 */
+	public static List<Book> searchListInfo(Elements results){
+		List<LinkTypeData> datas = searchHref(results);
+		List<Book> booklist = new ArrayList<Book>();
+		
+		for (int i = 0; i < datas.size(); i++) {
+			String url = datas.get(i).getLinkHref();  //获取超链接
+			
+	        Rule rule = new Rule(url,  
+	                new String[] {}, new String[] {},  
+	                null, -1, Rule.GET);     //设置搜索规则
+	        
+	        /*处理返回数据*/
+	        Elements e = ExtractService.extract(rule, null);
+	        /*获取对应的内容*/
+	        Book b = ExtractService.searchInfo(e);
+	        
+	        booklist.add(b);
+		}
+		
+		return booklist;
+	}
+	
+	/**
 	 * 当当网单一商品数据
 	 * @param results
 	 * @return 

@@ -27,11 +27,10 @@ public class ContentTest {
                 new String[] {}, new String[] {},  
                 null, -1, Rule.GET);
         
-        Response response = null;
         /*处理返回数据*/
-        Elements results = ExtractService.extract(rule, response);
+        Elements results = ExtractService.extract(rule, null);
         /*获取对应的内容*/
-        Book b = ExtractService.searchInfo(results);
+        List<Book> booklist = ExtractService.searchListInfo(results);
 
         
 //        SearchService ss = new SearchService();
