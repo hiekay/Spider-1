@@ -10,7 +10,6 @@ import com.spider.bean.LinkTypeData;
 import com.spider.bean.Rule;
 import com.spider.service.ExtractService;
 import com.spider.service.PrintService;
-import com.spider.service.SearchService;
 /**
  * 当当网内容搜索
  * @author LIn
@@ -32,8 +31,6 @@ public class ContentTest {
         /*获取对应的内容*/
         List<Book> booklist = ExtractService.searchListInfo(results);
 
-        
-//        SearchService ss = new SearchService();
         
         
 	}

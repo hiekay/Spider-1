@@ -15,7 +15,7 @@ import com.spider.bean.Rule;
 import com.spider.service.ExtractService;
 import com.spider.service.LoginService;
 import com.spider.service.PrintService;
-import com.spider.service.SearchService;
+
 /**
  * csdn模拟登录,获取表格内容
  * @author LIn
