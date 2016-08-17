@@ -32,14 +32,14 @@ public class ContentTest {
 		
 	    /*当当网商品爬取*/
         Rule rule = new Rule(url,  
-                new String[] {"key"}, new String[] {"看见"},  
+                new String[] {"key"}, new String[] {"期望"},  
                 "pic", Rule.CLASS, Rule.GET);
         
         /*处理返回数据*/
         Elements results = ExtractService.extract(rule, response);
         /*获取对应的内容*/
 
-        List<Book> booklist = ExtractService.searchListInfo(results);
+        List<Book> booklist = ExtractService.searchListInfo(results, response);
 
         for (int i = 0; i < booklist.size(); i++) {
 			System.out.println(booklist.get(i).toString());

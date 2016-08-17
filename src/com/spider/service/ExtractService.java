@@ -50,7 +50,7 @@ public class ExtractService
 			//模拟浏览器登录
 			Connection conn = Jsoup.connect(url).userAgent("Mozilla/5.0 "
 					+ "(Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko)"
-					+ " Chrome/26.0.1410.64 Safari/537.31");
+					+ " Chrome/26.0.1410.64 Safari/537.31").ignoreHttpErrors(true);
 			
 			//设置cookies
 			if(response != null){
@@ -167,7 +167,7 @@ public class ExtractService
 	 * @param results  搜索结果的元素集
 	 * @return  书籍信息列表
 	 */
-	public static List<Book> searchListInfo(Elements results){
+	public static List<Book> searchListInfo(Elements results,Response response){
 		List<LinkTypeData> datas = searchHref(results);
 		List<Book> booklist = new ArrayList<Book>();
 		int num = 0;  //限制数量
@@ -180,7 +180,7 @@ public class ExtractService
 	                null, -1, Rule.GET);     //设置搜索规则
 	        
 	        /*处理返回数据*/
-	        Elements e = ExtractService.extract(rule, null);
+	        Elements e = ExtractService.extract(rule, response);
 	        /*获取对应的内容*/
 	        Book b = ExtractService.searchInfo(e);
 	        
@@ -240,10 +240,10 @@ public class ExtractService
 		}
 		
 		/*对获取后的数据进行处理,使格式统一*/
-		price.replaceFirst("¥", "");
-		author.replaceFirst("作者：", "");
-		publishor.replaceFirst("出版社:", "");
-		time.replaceFirst("出版时间:", "");
+		price = price.replaceFirst("¥", "");
+		author = author.replaceFirst("作者:", "");
+		publishor = publishor.replaceFirst("出版社:", "");
+		time = time.replaceFirst("出版时间:", "");
 		
 		/*将数据封装在模型中*/
 		Book book = new Book();
