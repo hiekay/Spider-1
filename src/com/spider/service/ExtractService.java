@@ -172,7 +172,7 @@ public class ExtractService
 		List<Book> booklist = new ArrayList<Book>();
 		int num = 0;  //限制数量
 		
-		for (int i = 0; i < datas.size() && num < 10; i++) {
+		for (int i = 0; i < datas.size() && num < 5; i++) {
 			String url = datas.get(i).getLinkHref();  //获取超链接
 			System.out.println(i);
 	        Rule rule = new Rule(url,  

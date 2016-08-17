@@ -32,7 +32,7 @@ public class ContentTest {
 		
 	    /*当当网商品爬取*/
         Rule rule = new Rule(url,  
-                new String[] {"key"}, new String[] {"期望"},  
+                new String[] {"key"}, new String[] {"摩托车"},  
                 "pic", Rule.CLASS, Rule.GET);
         
         /*处理返回数据*/
