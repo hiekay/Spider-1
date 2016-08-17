@@ -6,7 +6,6 @@ public class Book {
 	private String author;   //作者
 	private String publishor;//出版社
 	private String time;     //出版时间
-	private String ISBN;     //ISBN
 	
 	public Book(){
 		
@@ -42,18 +41,13 @@ public class Book {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getISBN() {
-		return ISBN;
-	}
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
-	}
+
 	
 	@Override
 	public String toString(){
 		return "name: " + name + " price: " + price + " author: "
 				+ author + " publishor: " + publishor + " time: "
-				+ time + " ISBN: " + ISBN;
+				+ time;
 	}
 	
 	
