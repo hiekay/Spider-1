@@ -207,7 +207,6 @@ public class ExtractService
 		String author;
 		String publishor;
 		String time;
-		String ISBN;
 		
 		/*从网页元素里读取数据
 		 * 按照类型或id读取相应的数据*/
@@ -217,16 +216,16 @@ public class ExtractService
 			price = result.getElementById("salePriceTag").text().toString();
 			
 			Elements info = result.getElementsByClass("show_info_right");
-			author = info.get(6).text().toString();
 			
+			/*非书籍类商品没有以下属性*/
 			if(info.size() > 7){
+				author = info.get(6).text().toString();
 				publishor = info.get(7).text().toString();
 				time = info.get(8).text().toString();
-				ISBN = null;
 			}else{
+				author = null;
 				publishor = null;
 				time = null;
-				ISBN = null;
 			}
 		}else if(result.getElementById("price_sale") != null){  //当当自营
 			name = result.getElementsByClass("name_info").text().toString();
@@ -236,11 +235,15 @@ public class ExtractService
 			author = info.get(0).text().toString();
 			publishor = info.get(1).text().toString();
 			time = info.get(2).text().toString();
-			ISBN = "1";
 		}else{
 			return null;
 		}
 		
+		/*对获取后的数据进行处理,使格式统一*/
+		price.replaceFirst("¥", "");
+		author.replaceFirst("作者：", "");
+		publishor.replaceFirst("出版社:", "");
+		time.replaceFirst("出版时间:", "");
 		
 		/*将数据封装在模型中*/
 		Book book = new Book();
@@ -249,7 +252,6 @@ public class ExtractService
 		book.setAuthor(author);
 		book.setPublishor(publishor);
 		book.setTime(time);
-		book.setISBN(ISBN);
 
 		return book;
 	}

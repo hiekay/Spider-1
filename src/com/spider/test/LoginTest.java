@@ -29,7 +29,7 @@ public class LoginTest {
 		    
 		    /*输入用户名和密码以模拟登录  */
 		    Response response = ls.login("***", "***");
-		    
+
 		    /*设置爬取规则*/
 	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
 	                new String[] {}, new String[] {},  
