@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.st{
+	border: 1px solid blue;
+	width: 750px;
+	table-layout:fixed;
+	
+}
+
+.st td{
+	border: 1px solid blue;
+	width: 150px;
+	overflow:hidden; 
+	white-space:nowrap; 
+	
+}
+
+.st td div{
+	width:150px;
+	height:40px;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
