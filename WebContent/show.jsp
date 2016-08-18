@@ -25,13 +25,16 @@
 <% ArrayList<Book> booklist = (ArrayList<Book>)request.getAttribute("bl");%>
     <div>
         <table class="st">
-            <tr><td>商品名称</td><td>价格</td><td>作者</td><td>出版社</td><td>出版时间</td></tr>
+            <tr><td>商品名称</td><td>价格</td><td>作者</td><td>出版社</td><td>出版时间</td><td>购买链接</td></tr>
             <%
                 for(Book book:booklist){
             %>
-                <tr><td><div><%=book.getName() %></div></td><td><div><%=book.getPrice() %></div></td>
-                    <td><div><%=book.getAuthor() %></div></td><td><div><%=book.getPublishor() %></div></td>
-                	<td><div><%=book.getTime() %></div></td></tr>
+                <tr><td><div><%=book.getName() %></div></td>
+                	<td><div><%=book.getPrice() %></div></td>
+                    <td><div><%=book.getAuthor() %></div></td>
+                    <td><div><%=book.getPublishor() %></div></td>
+                	<td><div><%=book.getTime() %></div></td>
+                	<td><div><a href="<%=book.getUrl() %>">链接</a></div></td></tr>
             <%
                 }
             

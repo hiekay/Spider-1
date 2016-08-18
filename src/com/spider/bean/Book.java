@@ -6,6 +6,7 @@ public class Book {
 	private String author;   //作者
 	private String publishor;//出版社
 	private String time;     //出版时间
+	private String url;      //购买链接
 	
 	public Book(){
 		
@@ -41,8 +42,15 @@ public class Book {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString(){
 		return "name: " + name + " price: " + price + " author: "

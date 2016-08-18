@@ -186,6 +186,7 @@ public class ExtractService
 	        
 	        if(b != null){
 	        	num++;
+	        	b.setUrl(url);
 	        	booklist.add(b);
 	        }
 	        
