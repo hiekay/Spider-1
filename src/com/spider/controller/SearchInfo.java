@@ -31,8 +31,9 @@ public class SearchInfo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
-		
+		System.out.println(name);
 		String url = "http://search.dangdang.com";
 		
 		/*在建立一次http握手后,保存cookie,以免每次都需建立连接*/
@@ -56,7 +57,10 @@ public class SearchInfo extends HttpServlet {
 			System.out.println(booklist.get(i).toString());
 		}
         
-        
+		//request生命周期较短，将数据返回到显示页面
+		request.setAttribute("bl", booklist);
+		
+		request.getRequestDispatcher("show.jsp").forward(request, response);
 	}
 
 }
