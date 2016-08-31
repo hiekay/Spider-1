@@ -60,14 +60,5 @@ public class HttpCommonUtil {
 		}
 		return null;
 	}
-
-	public static void main(String[] args) {
-		try {
-			URL url = new URL("https", "202.133.116.70", -1, "");
-			System.out.println(getHttpHeaders(url, 10000));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-	}
 }
 
