@@ -34,7 +34,7 @@
                     <td><div><%=book.getAuthor() %></div></td>
                     <td><div><%=book.getPublishor() %></div></td>
                 	<td><div><%=book.getTime() %></div></td>
-                	<td><div><a href="<%=book.getUrl() %>">链接</a></div></td>
+                	<td><div><img src="<%=book.getUrl() %>"></div></td>
                 </tr>
             <%
                 }

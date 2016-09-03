@@ -55,7 +55,7 @@ public class Book {
 	public String toString(){
 		return "name: " + name + " price: " + price + " author: "
 				+ author + " publishor: " + publishor + " time: "
-				+ time;
+				+ time + " url: " + url;
 	}
 	
 	

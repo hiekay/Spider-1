@@ -172,7 +172,7 @@ public class ExtractService
 		List<Book> booklist = new ArrayList<Book>();
 		int num = 0;  //限制数量
 		
-		for (int i = 0; i < datas.size() && num < 5; i++) {
+		for (int i = 0; i < datas.size() && num < 3; i++) {
 			String url = datas.get(i).getLinkHref();  //获取超链接
 			System.out.println(i);
 	        Rule rule = new Rule(url,  
@@ -186,7 +186,7 @@ public class ExtractService
 	        
 	        if(b != null){
 	        	num++;
-	        	b.setUrl(url);
+//	        	b.setUrl(url);
 	        	booklist.add(b);
 	        }
 	        
@@ -208,6 +208,7 @@ public class ExtractService
 		String author;
 		String publishor;
 		String time;
+		String url;
 		
 		/*从网页元素里读取数据
 		 * 按照类型或id读取相应的数据*/
@@ -228,6 +229,8 @@ public class ExtractService
 				publishor = null;
 				time = null;
 			}
+			url = result.getElementById("largePic").attr("src");
+			
 		}else if(result.getElementById("price_sale") != null){  //当当自营
 			name = result.getElementsByClass("name_info").text().toString();
 			price = result.getElementById("price_sale").text().toString();
@@ -236,6 +239,7 @@ public class ExtractService
 			author = info.get(0).text().toString();
 			publishor = info.get(1).text().toString();
 			time = info.get(2).text().toString();
+			url = result.getElementById("largePic").attr("src");
 		}else{
 			return null;
 		}
@@ -253,6 +257,7 @@ public class ExtractService
 		book.setAuthor(author);
 		book.setPublishor(publishor);
 		book.setTime(time);
+		book.setUrl(url);
 
 		return book;
 	}
