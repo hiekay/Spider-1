@@ -186,7 +186,7 @@ public class ExtractService
 	        
 	        if(b != null){
 	        	num++;
-//	        	b.setUrl(url);
+	        	b.setUrl(url);
 	        	booklist.add(b);
 	        }
 	        
@@ -209,6 +209,7 @@ public class ExtractService
 		String publishor;
 		String time;
 		String url;
+		String image;
 		
 		/*从网页元素里读取数据
 		 * 按照类型或id读取相应的数据*/
@@ -229,7 +230,7 @@ public class ExtractService
 				publishor = null;
 				time = null;
 			}
-			url = result.getElementById("largePic").attr("src");
+			image = result.getElementById("largePic").attr("src");
 			
 		}else if(result.getElementById("price_sale") != null){  //当当自营
 			name = result.getElementsByClass("name_info").text().toString();
@@ -239,7 +240,7 @@ public class ExtractService
 			author = info.get(0).text().toString();
 			publishor = info.get(1).text().toString();
 			time = info.get(2).text().toString();
-			url = result.getElementById("largePic").attr("src");
+			image = result.getElementById("largePic").attr("src");
 		}else{
 			return null;
 		}
@@ -257,7 +258,7 @@ public class ExtractService
 		book.setAuthor(author);
 		book.setPublishor(publishor);
 		book.setTime(time);
-		book.setUrl(url);
+		book.setImage(image);
 
 		return book;
 	}
