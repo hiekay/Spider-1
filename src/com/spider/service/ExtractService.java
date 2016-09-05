@@ -216,6 +216,7 @@ public class ExtractService
 		/*需根据网页的不同样式来选择不同方式获取数据*/
 		if(result.getElementById("salePriceTag") != null){  //当当商家
 			name = result.getElementsByClass("head").text().toString();
+			image = result.getElementById("largePic").attr("src");
 			price = result.getElementById("salePriceTag").text().toString();
 			
 			Elements info = result.getElementsByClass("show_info_right");
@@ -230,7 +231,7 @@ public class ExtractService
 				publishor = null;
 				time = null;
 			}
-			image = result.getElementById("largePic").attr("src");
+			
 			
 		}else if(result.getElementById("price_sale") != null){  //当当自营
 			name = result.getElementsByClass("name_info").text().toString();

@@ -25,7 +25,9 @@
 <% ArrayList<Book> booklist = (ArrayList<Book>)request.getAttribute("bl");%>
     <div>
         <table class="st">
-            <tr><td>商品名称</td><td>价格</td><td>作者</td><td>出版社</td><td>出版时间</td><td>购买链接</td><td>图片展示</td></tr>
+            <tr><td>商品名称</td><td>价格</td><td>作者</td><td>出版社</td>
+            	<td>出版时间</td><td>购买链接</td><td>图片展示</td>
+            	</tr>
             <%
                 for(Book book:booklist){
             %>

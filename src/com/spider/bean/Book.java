@@ -1,5 +1,7 @@
 package com.spider.bean;
 
+import java.sql.Date;
+
 public class Book {
 	private String name;     //书名
 	private String price;    //价格
