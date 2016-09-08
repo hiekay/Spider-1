@@ -12,7 +12,7 @@ import org.jsoup.select.Elements;
 
 import com.spider.bean.LinkTypeData;
 import com.spider.bean.Rule;
-import com.spider.service.ExtractService;
+import com.spider.service.ExtractServiceMoGu;
 import com.spider.service.LoginService;
 import com.spider.service.PrintService;
 
@@ -36,9 +36,9 @@ public class LoginTest {
 	                "body", Rule.SELECTION, Rule.POST);
 	        
 	        /*处理返回数据*/
-	        Elements results = ExtractService.extract(rule, response);
+	        Elements results = ExtractServiceMoGu.extract(rule, response);
 	        /*获取对应的内容*/
-	        List<LinkTypeData> extracts = ExtractService.searchTable(results);
+	        List<LinkTypeData> extracts = ExtractServiceMoGu.searchTable(results);
 	        PrintService.printf(extracts);
 	         
 	 }

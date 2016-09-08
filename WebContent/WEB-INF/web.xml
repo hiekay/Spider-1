@@ -17,5 +17,38 @@
     <servlet-name>SearchInfo</servlet-name>
     <url-pattern>/SearchInfo</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>SearchInfoMoGu</servlet-name>
+    <servlet-class>com.spider.controller.SearchInfoMoGu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInfoMoGu</servlet-name>
+    <url-pattern>/SearchInfoMoGu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchInfoDangDang</servlet-name>
+    <servlet-class>com.spider.controller.SearchInfoDangDang</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInfoDangDang</servlet-name>
+    <url-pattern>/SearchInfoDangDang</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>moguoperations</servlet-name>
+    <servlet-class>com.spider.sql.moguoperations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>moguoperations</servlet-name>
+    <url-pattern>/moguoperations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>dangdangoperations</servlet-name>
+    <servlet-class>com.spider.sql.dangdangoperations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dangdangoperations</servlet-name>
+    <url-pattern>/dangdangoperations</url-pattern>
+  </servlet-mapping>
 
 </web-app>

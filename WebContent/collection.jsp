@@ -11,7 +11,7 @@
 	  String driver = "com.mysql.jdbc.Driver";
 	  String url = "jdbc:mysql://localhost:3306/spider";
 	  String username = "root";
-	  String password = "";
+	  String password = "1234";
 	  Connection conn = null;
 	  try {
 	      Class.forName(driver); //classLoader,���ض�Ӧ����
