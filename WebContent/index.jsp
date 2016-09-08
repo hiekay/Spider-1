@@ -7,14 +7,40 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 	<title>首页</title>
 </head>
+<script type="text/javascript">
+    function setFormAction(){
+	    var oForm = document.getElementsByTagName("form")[0];
+	    var aOpt = document.getElementsByTagName("option");
+	    
+
+		if(aOpt[0].selected === true ){
+			oForm.action="SearchInfoMoGu";
+		}
+		
+		if(aOpt[1].selected === true ){
+			oForm.action="SearchInfoDangDang";
+		}
+
+	    oForm.submit();
+	}
+</script>
 <body>
     <div>
-        <form name="upload"action="SearchInfo" method="post">
-            <font>当当网商品搜索：</font>
-            <input name="name" type="text"/><br>
-            <input type="submit" value="提交" onclick="formSubmit();">
+        <form name="upload" action=# method="post">
+            <font>商品搜索：</font>
+            <input name="name" type="text"/>
+			<select autocomplete="off">
+            	<option value="mogujie">蘑菇街</option>
+            	<option value="dangdang">当当网</option>
+            </select><br>
+            <input type="submit" value="提交" onclick="setFormAction();">
         	<input type="reset" value="重置" style=" position: relative ; left:20px;">
         </form>
+        <input name="name" type="button" value="查看收藏" onclick="window.location='collection.jsp'"/>
+        <div>
+        
+        </div>
     </div>
+    
 </body>
 </html>

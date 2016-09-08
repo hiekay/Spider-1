@@ -1,23 +1,37 @@
 @CHARSET "UTF-8";
 
-.st{
-	border: 1px solid blue;
-	width: 750px;
-	table-layout:fixed;
-	
+body,ul,ol,p,h1,h2,h3,h4,h5{margin:0; padding:0;}
+ul{padding-left:0; margin:0;}
+li{list-style:none;}
+img {border:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline/none; }
+
+.show{
+	width:848px;
+	height:180px;
+	margin:8px auto;
+	padding:10px 6px;
+	border:1px solid #000;
+	white-space:narmal;  
+	word-wrap: break-word;
 }
 
-.st td{
-	border: 1px solid blue;
-	width: 150px;
-	overflow:hidden; 
-	white-space:nowrap; 
-	
+.show img{
+	width:160px;
+	height:170px;
+	float:left;
 }
 
-.st td div{
-	width:150px;
-	height:40px;
-	overflow:hidden; 
-	text-overflow:ellipsis;
+.show p{
+	padding-left:10px;
+	width:622px;
+	height:160px;
+	float:left;
+	word-wrap: break-word;
+}
+
+.show form{
+	margin-top:50px;
+	float:left;	
 }
