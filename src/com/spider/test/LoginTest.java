@@ -1,6 +1,8 @@
 package com.spider.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.spi.DirStateFactory.Result;
 
@@ -31,8 +33,10 @@ public class LoginTest {
 		    Response response = ls.login("***", "***");
 
 		    /*设置爬取规则*/
-	        Rule rule = new Rule("http://write.blog.csdn.net/category",  
-	                new String[] {}, new String[] {},  
+			String url = "http://write.blog.csdn.net/category";
+			Map<String, String> map = new HashMap<>();
+			
+	        Rule rule = new Rule(url, map,  
 	                "body", Rule.SELECTION, Rule.POST);
 	        
 	        /*处理返回数据*/

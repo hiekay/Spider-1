@@ -1,7 +1,9 @@
 package com.spider.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +35,7 @@ public class SearchInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
-		System.out.println(name);
+//		System.out.println(name);
 		String url = "http://search.dangdang.com";
 		
 		/*在建立一次http握手后,保存cookie,以免每次都需建立连接*/
@@ -43,8 +45,10 @@ public class SearchInfo extends HttpServlet {
 		Response r = con.ignoreContentType(true).method(Method.GET).execute();
 		
 	    /*当当网商品爬取*/
-        Rule rule = new Rule(url,  
-                new String[] {"key"}, new String[] {name},  
+		Map<String, String> map = new HashMap<>();
+		map.put("key", name);
+		
+        Rule rule = new Rule(url, map,  
                 "pic", Rule.CLASS, Rule.GET);
         
         /*处理返回数据*/

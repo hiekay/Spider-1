@@ -2,7 +2,9 @@ package com.spider.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.crypto.Data;
 
@@ -41,8 +43,7 @@ public class ExtractServiceDangDang
 			 * 解析rule
 			 */
 			String url = rule.getUrl();
-			String[] params = rule.getParams();
-			String[] values = rule.getValues();
+			Map<String, String> map = rule.getMap();
 			String resultTagName = rule.getResultTagName();
 			int type = rule.getType();
 			int requestType = rule.getRequestMoethod();
@@ -58,12 +59,11 @@ public class ExtractServiceDangDang
 			}
 			
 			// 设置查询参数
-			if (params != null)
-			{
-				for (int i = 0; i < params.length; i++)
-				{
-					conn.data(params[i], values[i]);
+			if (map.size() != 0) {
+				for (Map.Entry<String, String> entry : map.entrySet()) {
+					conn.data(entry.getKey(), entry.getValue());
 				}
+
 			}
 
 			// 设置请求类型
@@ -171,12 +171,12 @@ public class ExtractServiceDangDang
 		List<LinkTypeData> datas = searchHref(results);
 		List<Book> booklist = new ArrayList<Book>();
 		int num = 0;  //限制数量
+		Map<String,String> map = new HashMap<>();
 		
 		for (int i = 0; i < datas.size() && num < 3; i++) {
 			String url = datas.get(i).getLinkHref();  //获取超链接
 			System.out.println(i);
-	        Rule rule = new Rule(url,  
-	                new String[] {}, new String[] {},  
+	        Rule rule = new Rule(url, map,  
 	                null, -1, Rule.GET);     //设置搜索规则
 	        
 	        /*处理返回数据*/
@@ -279,14 +279,6 @@ public class ExtractServiceDangDang
 		if (!(url.startsWith("http://") || url.startsWith("https://")))
 		{
 			throw new RuleException("url的格式不正确！");
-		}
-
-		if (rule.getParams() != null && rule.getValues() != null)
-		{
-			if (rule.getParams().length != rule.getValues().length)
-			{
-				throw new RuleException("参数的键值对个数不匹配！");
-			}
 		}
 
 	}

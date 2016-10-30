@@ -1,7 +1,9 @@
 package com.spider.test;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -23,6 +25,7 @@ public class ContentTest {
 	
 	public static void main(String[] args) throws IOException {
 		String url = "http://www.mogujie.com/";
+		Map<String, String> map = new HashMap<>();
 		
 		/*在建立一次http握手后,保存cookie,以免每次都需建立连接*/
 		Connection con = Jsoup.connect(url).userAgent("Mozilla/5.0 "
@@ -31,8 +34,8 @@ public class ContentTest {
 		Response response = con.ignoreContentType(true).method(Method.GET).execute();
 		
 	    /*蘑菇街商品爬取*/
-        Rule rule = new Rule(url,  
-                new String[] {"key"}, new String[] {"摩托车"},  
+		map.put("key", "摩托车");
+        Rule rule = new Rule(url, map,  
                 "pic", Rule.CLASS, Rule.GET);
         
         /*处理返回数据*/

@@ -1,7 +1,9 @@
 package com.spider.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +44,10 @@ public class SearchInfoMoGu extends HttpServlet {
 		Response r = con.ignoreContentType(true).method(Method.GET).execute();
 		
 	    /*蘑菇街商品爬取*/
-        Rule rule = new Rule(url,  
-                new String[] {"q"}, new String[] {name},  
+		Map<String, String> map = new HashMap<>();
+		map.put("q", name);
+		
+        Rule rule = new Rule(url, map,  
                 "ajax_param", Rule.CLASS, Rule.GET);
         
         /*处理返回数据*/

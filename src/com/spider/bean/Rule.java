@@ -1,112 +1,88 @@
 package com.spider.bean;
 
+import java.util.Map;
+
 /**
  * 规则类
  * 
  */
-public class Rule
-{
-	
-	private String url;//链接
-	private String[] params;//参数集合
-	private String[] values;//参数对应的值
+public class Rule {
+
+	private String url;// 链接
+	private Map<String, String> map;// 参数集合及其对应的值
 	/**
 	 * 对返回的HTML，第一次过滤所用的标签，请先设置type
 	 */
 	private String resultTagName;
 
 	/**
-	 * CLASS / ID / SELECTION
-	 * 设置resultTagName的类型，默认为ID 
+	 * CLASS / ID / SELECTION 设置resultTagName的类型，默认为ID
 	 */
-	private int type = ID ; //筛选条件
-	
+	private int type = ID; // 筛选条件
+
 	/**
-	 *GET / POST
-	 * 请求的类型，默认GET
+	 * GET / POST 请求的类型，默认GET
 	 */
-	private int requestMoethod = GET ; 
-	
-	public final static int GET = 0 ;
-	public final static int POST = 1 ;
-	
+	private int requestMoethod = GET;
+
+	public final static int GET = 0;
+	public final static int POST = 1;
 
 	public final static int CLASS = 0;
 	public final static int ID = 1;
 	public final static int SELECTION = 2;
 
-	public Rule(){}
-	
-	public Rule(String url, String[] params, String[] values,
-			String resultTagName, int type, int requestMoethod){
+	public Rule() {
+	}
+
+	public Rule(String url, Map<String,String> map, String resultTagName, int type,
+			int requestMoethod) {
 		super();
 		this.url = url;
-		this.params = params;
-		this.values = values;
+		this.map = map;
 		this.resultTagName = resultTagName;
 		this.type = type;
 		this.requestMoethod = requestMoethod;
 	}
 
-
-	public String getUrl()
-	{
+	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(String url)
-	{
+	public void setUrl(String url) {
 		this.url = url;
 	}
 
-	public String[] getParams()
-	{
-		return params;
-	}
-
-	public void setParams(String[] params)
-	{
-		this.params = params;
-	}
-
-	public String[] getValues()
-	{
-		return values;
-	}
-
-	public void setValues(String[] values)
-	{
-		this.values = values;
-	}
-
-	public String getResultTagName()
-	{
+	public String getResultTagName() {
 		return resultTagName;
 	}
 
-	public void setResultTagName(String resultTagName)
-	{
+	public void setResultTagName(String resultTagName) {
 		this.resultTagName = resultTagName;
 	}
 
-	public int getType()
-	{
+	public int getType() {
 		return type;
 	}
 
-	public void setType(int type)
-	{
+	public void setType(int type) {
 		this.type = type;
 	}
 
-	public int getRequestMoethod()
-	{
+	public int getRequestMoethod() {
 		return requestMoethod;
 	}
 
-	public void setRequestMoethod(int requestMoethod)
-	{
+	public void setRequestMoethod(int requestMoethod) {
 		this.requestMoethod = requestMoethod;
+	}
+
+	public Map<String, String> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<String, String> map) {
+		this.map = map;
 	}
 
 }
